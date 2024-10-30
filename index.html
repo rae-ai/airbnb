@@ -15,23 +15,85 @@
         h1 {
             color: #333;
         }
-        p {
-            color: #555;
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        a {
-            color: #1a73e8;
-            text-decoration: none;
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            font-weight: bold;
         }
-        a:hover {
-            text-decoration: underline;
+        .tab:hover, .tab.active {
+            background-color: #1a73e8;
+            color: #fff;
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+        }
+        .content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My GitHub Page</h1>
-    <p>This is a simple webpage hosted on GitHub Pages.</p>
-    <p>Check out <a href="https://github.com" target="_blank">GitHub</a> for more information.</p>
+    <h1>Data Visualizations</h1>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab" onclick="showContent('wordCloud')">Word Cloud</div>
+        <div class="tab" onclick="showContent('geospatialClustering')">Geospatial Clustering</div>
+        <div class="tab" onclick="showContent('heatmaps')">Heatmaps</div>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="wordCloud" class="content">
+        <h2>Word Cloud</h2>
+        <p>This section contains information and visualizations for Word Cloud.</p>
+        <!-- You can embed your Word Cloud visualization here -->
+    </div>
+
+    <div id="geospatialClustering" class="content">
+        <h2>Geospatial Clustering</h2>
+        <p>This section contains information and visualizations for Geospatial Clustering.</p>
+        <!-- You can embed your Geospatial Clustering visualization here -->
+    </div>
+
+    <div id="heatmaps" class="content">
+        <h2>Heatmaps</h2>
+        <p>This section contains information and visualizations for Heatmaps.</p>
+        <!-- You can embed your Heatmaps visualization here -->
+    </div>
+
+    <script>
+        function showContent(tabId) {
+            // Hide all content divs
+            var contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tabs
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show the selected content and activate the tab
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Show the first tab by default
+        document.querySelector('.tab').click();
+    </script>
 
 </body>
 </html>
